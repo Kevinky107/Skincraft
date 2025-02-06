@@ -48,8 +48,56 @@ const uvMappings = {
     back: { x: 28 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
     left: { x: 24 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
     right: { x: 16 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
-    top: { x: 36 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+    top: { x: 20 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
     bottom: { x: 24 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  head2: {
+    front: { x: 40 / 64, y: 8 / 64, width: 8 / 64, height: 8 / 64 },
+    back: { x: 56 / 64, y: 8 / 64, width: 8 / 64, height: 8 / 64 },
+    left: { x: 48 / 64, y: 8 / 64, width: 8 / 64, height: 8 / 64 },
+    right: { x: 32 / 64, y: 8 / 64, width: 8 / 64, height: 8 / 64 },
+    top: { x: 40 / 64, y: 0 / 64, width: 8 / 64, height: 8 / 64 },
+    bottom: { x: 48 / 64, y: 0 / 64, width: 8 / 64, height: 8 / 64 },
+  },
+  torso2: {
+    front: { x: 20 / 64, y: 36 / 64, width: 8 / 64, height: 12 / 64 },
+    back: { x: 32 / 64, y: 36 / 64, width: 8 / 64, height: 12 / 64 },
+    left: { x: 28 / 64, y: 36 / 64, width: 4 / 64, height: 8 / 64 },
+    right: { x: 16 / 64, y: 36 / 64, width: 4 / 64, height: 8 / 64 },
+    top: { x: 20 / 64, y: 32 / 64, width: 8 / 64, height: 4 / 64 },
+    bottom: { x: 28 / 64, y: 32 / 64, width: 8 / 64, height: 4 / 64 },
+  },
+  rightArm2: {
+    front: { x: 44 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 52 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 48 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 40 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 44 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 48 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  leftArm2: {
+    front: { x: 52 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 60 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 56 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 48 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 52 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 56 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  rightLeg2: {
+    front: { x: 4 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 12 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 8 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 0 / 64, y: 36 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 4 / 64, y: 32 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 8 / 64, y: 32 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  leftLeg2: {
+    front: { x: 4 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 12 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 8 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 0 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 4 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 8 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
   }
 };
 
@@ -138,9 +186,26 @@ export const Part = ({ position, args, texture, part }) => {
   geometry.setIndex(new THREE.BufferAttribute(indices, 1));
   geometry.computeVertexNormals();
 
+  const edges = new THREE.EdgesGeometry(geometry);
+
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x000000,
+    linewidth: 5,
+  });
+
   return (
-    <mesh position={position} geometry={geometry}>
-      <meshBasicMaterial map={skinTexture} />
-    </mesh>
+    <>
+      <mesh position={position} geometry={geometry}>
+        <meshBasicMaterial 
+          map={skinTexture} 
+          transparent={true}
+          alphaTest={0.5} 
+          polygonOffset={true} 
+          polygonOffsetFactor={1} 
+          polygonOffsetUnits={1}
+        />
+      </mesh>
+      {/* <lineSegments material={lineMaterial} position={position} geometry={edges} /> */}
+    </>
   );
 };

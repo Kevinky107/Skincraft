@@ -14,16 +14,8 @@ export const MinecraftSkinEditor = () => {
     setCanvas(canvasElement);
   }, []);
 
-  /* const handlePaint = (e) => {
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#ff0000";
-    ctx.fillRect(e.clientX % 64, e.clientY % 64, 4, 4);
-    setTexture(canvas.toDataURL());
-  }; */
-
   return (
-    <div className="w-full h-screen" /* onMouseMove={handlePaint} */>
+    <div className="w-full h-screen">
       <Canvas style={{ width: "100%", height: "500px" }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 2, 2]} />
