@@ -22,10 +22,34 @@ const uvMappings = {
   rightArm: {
     front: { x: 44 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
     back: { x: 52 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
-    left: { x: 40 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
-    right: { x: 48 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 48 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 40 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
     top: { x: 44 / 64, y: 16 / 64, width: 4 / 64, height: 4 / 64 },
     bottom: { x: 48 / 64, y: 16 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  leftArm: {
+    front: { x: 36 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 44 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 40 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 32 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 36 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 40 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  rightLeg: {
+    front: { x: 4 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 12 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 8 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 0 / 64, y: 20 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 4 / 64, y: 16 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 8 / 64, y: 16 / 64, width: 4 / 64, height: 4 / 64 },
+  },
+  leftLeg: {
+    front: { x: 20 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    back: { x: 28 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    left: { x: 24 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    right: { x: 16 / 64, y: 52 / 64, width: 4 / 64, height: 12 / 64 },
+    top: { x: 36 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
+    bottom: { x: 24 / 64, y: 48 / 64, width: 4 / 64, height: 4 / 64 },
   }
 };
 
@@ -87,10 +111,10 @@ export const Part = ({ position, args, texture, part }) => {
     -args[0] / 2, args[1] / 2, -args[2] / 2,
 
     // Abajo
-    -args[0] / 2, -args[1] / 2, -args[2] / 2,
     args[0] / 2, -args[1] / 2, -args[2] / 2,
     args[0] / 2, -args[1] / 2, args[2] / 2,
     -args[0] / 2, -args[1] / 2, args[2] / 2,
+    -args[0] / 2, -args[1] / 2, -args[2] / 2
   ]);
 
   const indices = new Uint16Array([
